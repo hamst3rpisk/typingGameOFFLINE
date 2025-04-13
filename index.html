@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- Typing Speed Test in js -->
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Funnel+Display:wght@300..800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat+Underline:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Typing Speed Test</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    
+    <div id="rain"></div>
+    <div id="rainside"></div>
+    
+    <p id="main">Typing Speed Test</p>
+    <div class="container">
+        <div id="settingDiv">
+            <button id="playbutton">Play</button>
+            <p class="sliderText">Letters Per Word</p>
+            <input type="range" id="letterSlider" min="1" max="10" value="0" class="optionSlider"></input>
+            <p id="selectedLetters" class="sliderValueText">Random</p>
+            <p class="sliderText">Number of Words</p>
+            <input type="range" id="wordSlider" min="1" max="10" value="1" class="optionSlider"></input>
+            <p id="selectedWords" class="sliderValueText">1</p>
+            
+        </div>
+        <div id="leaderboardDiv">
+            <p class="leaderboardText" id="bestScore"></p>
+            <p class="leaderboardText" id="bestWpm"></p>
+            <p class="leaderboardText" id="bestWordsWritten"></p>
+
+        </div>
+    
+        <div id="scorediv" class="hidden">
+            <p id="score" class="scoredivtext">Score: 0</p>
+            <p id="time" class="scoredivtext">Time: </p>
+            <p id="wpm" class="scoredivtext">0wpm</p>
+        </div>
+        <div id="maingamediv" class="hidden">
+            <p contenteditable="true" spellcheck="false" id="writeField"></p>
+            <p id="textDisplayed"></p>
+        </div>
+        <p id="endgame" class="scoredivtext" class="hidden"> Click Esc to end game</p>
+        <div id="endgamediv" class="hidden">
+            <p class="endgametext">Your game has come to an end!</p>
+            <p class="endgametextstats" id="endgamescoretext">Score: </p>
+            <p class="endgametextstats" id="endgamewpmtext">Words per Minute: </p>
+            <p class="endgametextstats" id="endgamewordstext">Words written: </p>
+            <button id="backtomainbutton">Back to main menu</button>
+        </div>
+    </div>
+    
+
+    <script src="script.js"></script>
+</body>
+
+</html>
