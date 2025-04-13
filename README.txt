@@ -1,2 +1,2 @@
-Uses https://random-word-api.herokuapp.com/home api to generate words
+typingGame but with a local db
 Made by me - Krzysztof Gawroński
