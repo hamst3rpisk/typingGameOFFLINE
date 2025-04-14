@@ -63,7 +63,6 @@ let bestWordsWrittenP = document.querySelector("#bestWordsWritten");
 fetch("getBest.php")
     .then (response => response.json())
     .then (data=> {
-        console.log(data);
         bestScoreP.innerText = "Best score: " + data[0];
         bestWpmP.innerText = "Best WPM (Words Per Minute): " + data[1];
         bestWordsWrittenP.innerText = "Most words written at once: " + data[2];
@@ -88,6 +87,7 @@ function fetchDatabaseData() {
     .then(response => response.text())
     .then(data => {
         data = data.trim();
+        if (data == false) falseDataPopUp();
         textDisplayed.innerHTML = data;
         console.log(data + "- your data");
 
@@ -141,6 +141,21 @@ function startgame() {
         } 
     })
 }
+function falseDataPopUp() {
+    clearInterval(timeInterval);
+    maingamediv.style.display="none";
+    scorediv.style.display="none";
+    endgamep.style.display="none";
+    endgamediv.classList.remove("hidden");
+    endgamescoretext.innerText = "The mysql query failed... try different options";
+    endgamewpmtext.innerHTML = "";
+    endgamewordstext.innerHTML = "";
+    endgamediv.style.animation="fadeIntoNoBG 1s";
+    setTimeout(() => {
+        endgamediv.style.animation="";
+        endgamediv.style.opacity="100%";
+    },1000);
+}
 function endGame() {
     clearInterval(timeInterval);
     maingamediv.style.display="none";
@@ -187,7 +202,7 @@ function endGame() {
     })
     .then(response => response.text())
     .then(data => {
-        console.log(data + "<- data");
+        //nothing rn
     });
 }
 function startTime() {

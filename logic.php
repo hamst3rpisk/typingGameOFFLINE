@@ -1,10 +1,11 @@
 <?php
-    $connection = mysqli_connect("localhost","root","","typinggame");
-?>
-
-<?php
-    if (isset($_POST['startGame']) && $_POST['startGame'] == "true") {
-        startGame();
+    ini_set('display_errors',0);
+    $connection = @mysqli_connect("localhost","root","","typinggame");
+    if (!$connection) echo false;
+    else {
+        if (isset($_POST['startGame']) && $_POST['startGame'] == "true") {
+            startGame();
+        }
     }
     function startGame() {
         global $connection;
@@ -16,17 +17,21 @@
                 if ($numLetters == 1) $query = "SELECT word FROM words ORDER BY RAND() LIMIT $numWords";
                 else $query = "SELECT word FROM words WHERE CHAR_LENGTH(word) = $numLetters ORDER BY RAND() LIMIT $numWords";
                 $result = mysqli_query($connection,$query);
-                while ($row = mysqli_fetch_row($result)) {
-                    $displayedText .= "$row[0] ";
+                if (mysqli_num_rows($result) == 0 || !$result) {
+                    echo false;
                 }
-                $displayedText = rtrim($displayedText);
-                echo $displayedText;
+                else {
+                    while ($row = mysqli_fetch_row($result)) {
+                        $displayedText .= "$row[0] ";
+                    }
+                    $displayedText = rtrim($displayedText);
+                    echo $displayedText;
+                }
             }
         }
     }
-        
 ?>
 
 <?php
-    mysqli_close($connection);
+    if ($connection) mysqli_close($connection);
 ?>
